@@ -1,5 +1,6 @@
 /** @jsxImportSource theme-ui */
 import Image from "next/image";
+import styled from "@emotion/styled";
 
 import {
   Box,
@@ -11,44 +12,85 @@ import {
   IconButton,
 } from "theme-ui";
 
+const BannerBox = styled.span`
+position: "absolute";
+width: 100%;
+height: 100%;
+bottom: "0px";
+ --tw-gradient-stops: var(--tw-gradient-from);
+ var(--tw-gradient-to, rgba(0, 0, 0, 0));
+ background-image: linear-gradient(to top, var(--tw-gradient-stops));
+
+ --tw-gradient-from: var(--black);
+
+backgroundSize: "cover";
+backgroundPosition: "50% 50%";
+`;
+
 const banner = (props) => {
   const { title, subTitle, imgUrl, videoId } = props;
-  console.log(props);
+
+  const handleOnPlay = () => {
+    console.log("play");
+  };
 
   return (
-    <Container sx={styles.contentWrapper}>
+    <Container sx={styles.container}>
       <Box sx={styles.leftWrapper}>
         <Box sx={styles.left}>
+          {/* Nseries */}
           <Box sx={styles.nseriesWrapper}>
             <Paragraph sx={styles.firstLetter}>N</Paragraph>
             <Paragraph sx={styles.series}>S E R I E S</Paragraph>
           </Box>
 
+          {/* Heading */}
           <Heading sx={styles.title} color="red" as="h3">
             {title}
           </Heading>
           <Heading sx={styles.subTitle} as="h3">
             {subTitle}
           </Heading>
+
           {/* Button */}
           <Box sx={styles.playBtnWrapper}>
-            <IconButton sx={styles.btnWithIcon} aria-label="Play button">
+            <IconButton
+              sx={styles.btnWithIcon}
+              onClick={handleOnPlay}
+              aria-label="Play button"
+            >
               <Image
                 src="/static/play_arrow.svg"
                 alt="Play icon"
                 width="32px"
                 height="32px"
               />
-              <span>Play</span>
+              <span
+                style={{
+                  color: "rgb(31, 41, 55)",
+                  fontWeight: 600,
+                  fontSize: "1.125rem",
+                  lineHeight: "1.75rem",
+                  paddingleft: "0.25rem",
+                  textalign: "center",
+                }}
+              >
+                Play
+              </span>
             </IconButton>
           </Box>
         </Box>
       </Box>
 
-      <Box
-        style={{ backgroundImage: `url(${imgUrl}` }}
-        sx={{ variant: "images.banner" }}
-      ></Box>
+      <BannerBox>
+        <Image
+          alt="Mountains"
+          src={imgUrl}
+          layout="fill"
+          objectFit="cover"
+          quality={100}
+        />
+      </BannerBox>
     </Container>
   );
 };
@@ -56,7 +98,7 @@ const banner = (props) => {
 export default banner;
 
 const styles = {
-  contentWrapper: {
+  container: {
     width: "100%",
     height: "80vh",
     position: "relative",
@@ -65,7 +107,7 @@ const styles = {
     position: "absolute",
     width: "100%",
     height: "100%",
-    zIndex: "10",
+    zIndex: 10,
   },
   left: {
     display: "flex",
@@ -96,18 +138,18 @@ const styles = {
     lineHeight: "2rem",
     fontWeight: 800,
     color: "rgba(255, 255, 255, 1)",
-    // -webkit-text-stroke: 2px var(--black);
+    textStroke: "2px rgb(0, 0, 0)",
   },
   subTitle: {
     fontSize: "1.125rem",
     lineHeight: "1.75rem",
-    color: "green",
-    // -webkit-text-stroke: 1px gray,
+    color: "rgba(255, 255, 255, 1)",
+    textStroke: "1px gray",
   },
   playBtnWrapper: {
-    display: "lex",
+    display: "flex",
     flexDirection: "row",
-    width: "00%",
+    width: "100%",
   },
   btnWithIcon: {
     display: "flex",
