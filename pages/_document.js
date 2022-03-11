@@ -1,26 +1,22 @@
-import Document, { Head, Html, Main, NextScript } from "next/document";
-import { InitializeColorMode } from "theme-ui";
-// we use class over func because we need to extend document
+import Document, { Html, Head, Main, NextScript } from "next/document";
+
 class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en">
+      <Html>
         <Head>
-          <Head>
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link
-              rel="preconnect"
-              href="https://fonts.gstatic.com"
-              crossorigin
-            />
-            <link
-              href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap"
-              rel="stylesheet"
-            />
-          </Head>
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin=""
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <body>
-          <InitializeColorMode />
           <Main />
           <NextScript />
         </body>
@@ -30,6 +26,3 @@ class MyDocument extends Document {
 }
 
 export default MyDocument;
-
-// _app vs _document
-// _app adds stuff to body, not responsible for html and head

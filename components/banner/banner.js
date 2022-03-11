@@ -38,13 +38,11 @@ const banner = (props) => {
     <Container sx={styles.container}>
       <Box sx={styles.leftWrapper}>
         <Box sx={styles.left}>
-          {/* Nseries */}
           <Box sx={styles.nseriesWrapper}>
             <Paragraph sx={styles.firstLetter}>N</Paragraph>
             <Paragraph sx={styles.series}>S E R I E S</Paragraph>
           </Box>
 
-          {/* Heading */}
           <Heading sx={styles.title} color="red" as="h3">
             {title}
           </Heading>
@@ -69,8 +67,8 @@ const banner = (props) => {
                 style={{
                   color: "rgb(31, 41, 55)",
                   fontWeight: 600,
-                  fontSize: "1.125rem",
-                  lineHeight: "1.75rem",
+                  fontSize: "20px",
+                  lineHeight: "28px",
                   paddingleft: "0.25rem",
                   textalign: "center",
                 }}
@@ -134,17 +132,18 @@ const styles = {
     alignSelf: "center",
   },
   title: {
-    fontSize: "1.5rem",
-    lineHeight: "2rem",
+    fontSize: "60px",
+    lineHeight: "60px",
     fontWeight: 800,
+    maxWidth: "30rem",
     color: "rgba(255, 255, 255, 1)",
-    textStroke: "2px rgb(0, 0, 0)",
+    "-webkit-text-stroke": "2px rgb(0, 0, 0)",
   },
   subTitle: {
-    fontSize: "1.125rem",
-    lineHeight: "1.75rem",
+    fontSize: "24px",
+    lineHeight: "32px",
     color: "rgba(255, 255, 255, 1)",
-    textStroke: "1px gray",
+    "-webkit-text-stroke": "1px gray",
   },
   playBtnWrapper: {
     display: "flex",
@@ -159,8 +158,8 @@ const styles = {
     paddingRight: "1.25rem",
     marginTop: "1.25rem",
     borderRadius: "0.5rem",
-    paddingTop: "0.5rem",
-    paddingBottom: "0.5rem",
+    paddingTop: "1.5rem",
+    paddingBottom: "1.5rem",
     backgroundColor: "rgba(255, 255, 255, 1)",
     width: "8rem",
   },
