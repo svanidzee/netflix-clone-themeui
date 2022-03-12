@@ -1,6 +1,8 @@
 /** @jsxImportSource theme-ui */
 import Image from "next/image";
+
 import styled from "@emotion/styled";
+import { css } from "@emotion/react";
 
 import {
   Box,
@@ -25,6 +27,14 @@ bottom: "0px";
 
 backgroundSize: "cover";
 backgroundPosition: "50% 50%";
+`;
+const PlayButton = styled.span`
+  color: rgb(31, 41, 55);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  padding-left: 0.25rem;
+  text-align: center;
 `;
 
 const banner = (props) => {
@@ -63,7 +73,7 @@ const banner = (props) => {
                 width="32px"
                 height="32px"
               />
-              <span
+              {/* <span
                 style={{
                   color: "rgb(31, 41, 55)",
                   fontWeight: 600,
@@ -74,7 +84,8 @@ const banner = (props) => {
                 }}
               >
                 Play
-              </span>
+              </span> */}
+              <PlayButton>Play</PlayButton>
             </IconButton>
           </Box>
         </Box>
