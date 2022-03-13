@@ -4,12 +4,26 @@ const Card = dynamic(import("../components/card/card"));
 const Navbar = dynamic(import("../components/navbar/navbar"));
 const SectionCards = dynamic(import("../components/card/section-cards"));
 
+import { getVideos } from "../lib/videos";
+
 import { Box } from "theme-ui";
 
 import { ThemeProvider } from "theme-ui";
 import theme from "../lib";
 
-export default function IndexPage() {
+export async function getServerSideProps() {
+  const disneyVideos = await getVideos("disney trailer");
+  const productivityVideos = await getVideos("productivity");
+  const travelVideos = await getVideos("travel");
+  // const popularVideos = await getVideos("disney trailer");
+  return { props: { disneyVideos, travelVideos, productivityVideos } };
+}
+
+export default function IndexPage({
+  disneyVideos,
+  travelVideos,
+  productivityVideos,
+}) {
   return (
     <ThemeProvider theme={theme}>
       <Navbar username="svanidzeee@gmail.com" />
@@ -21,7 +35,14 @@ export default function IndexPage() {
       />
 
       <Box sx={styles.sectionWrapper}>
-        <SectionCards title="Disney" />
+        <SectionCards title="Disney" videos={disneyVideos} size="large" />
+        <SectionCards title="Travel" videos={travelVideos} size="small" />
+        <SectionCards
+          title="Productivity"
+          videos={productivityVideos}
+          size="medium"
+        />
+        <SectionCards title="Popular" videos={disneyVideos} size="small" />{" "}
       </Box>
     </ThemeProvider>
   );

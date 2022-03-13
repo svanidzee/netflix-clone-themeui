@@ -5,24 +5,16 @@ import { Box, Heading } from "theme-ui";
 import Card from "../card/card";
 
 const SectionCards = (props) => {
-  const { title } = props;
+  const { title, videos = [], size } = props;
   return (
     <Box as="section" sx={styles.container}>
       <Heading as="h2" sx={styles.title}>
         {title}
       </Heading>
       <Box sx={styles.cardWrapper}>
-        <Card id={0} imgUrl="/static/clifford.webp" size="large" />
-        <Card imgUrl="/static/clifford.webp" size="large" />
-        <Card imgUrl="/static/clifford.webp" size="large" />
-        <Card imgUrl="/static/clifford.webp" size="large" />
-        <Card imgUrl="/static/clifford.webp" size="large" />
-        <Card imgUrl="/static/clifford.webp" size="large" />
-        <Card imgUrl="/static/clifford.webp" size="large" />
-        <Card imgUrl="/static/clifford.webp" size="large" />
-        <Card imgUrl="/static/clifford.webp" size="large" />
-        <Card imgUrl="/static/clifford.webp" size="large" />
-        <Card imgUrl="/static/clifford.webp" size="large" />
+        {videos.map((video, idx) => (
+          <Card id={idx} imgUrl={video.imgUrl} size={size} />
+        ))}
       </Box>
     </Box>
   );
