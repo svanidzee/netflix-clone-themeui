@@ -1,37 +1,7 @@
+/** @jsxImportSource theme-ui */
 import { useState } from "react";
-import Image from "next/image";
-import { motion } from "framer-motion";
 
-import { Box, Container } from "theme-ui";
-
-import styled from "@emotion/styled";
-import styles from "../../styles/card.module.css";
-import cls from "classnames";
-
-const ContainerDiv = styled.div`
-  margin-right: 0.25rem /* 4px */;
-  cursor: pointer;
-`;
-
-const StyledImage = styled(Image)`
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-
-  border-radius: 0.375rem /* 6px */;
-  object-fit: cover;
-
-  object-position: center;
-  display: block;
-
-  max-width: 100%;
-`;
-
-const StyledMotion = styled(motion.div)`
-  position: relative;
-  display: inline-block;
-`;
+import { styles, StyledImage, StyledMotion } from "./card-styles";
 
 const card = (props) => {
   const { imgUrl = "/static/cliffo.webp", size = "medium", id } = props;
@@ -54,8 +24,13 @@ const card = (props) => {
   const scale = id === 0 ? { scaleY: 1.1 } : { scale: 1.1 };
 
   return (
-    <ContainerDiv>
-      <StyledMotion className={classMap[size]} whileHover={{ ...scale }}>
+    <div
+      sx={{
+        marginRight: "0.25rem",
+        cursor: "pointer",
+      }}
+    >
+      <StyledMotion sx={classMap[size]} whileHover={{ ...scale }}>
         <StyledImage
           src={src}
           alt="Card"
@@ -63,7 +38,7 @@ const card = (props) => {
           onError={handleOnError}
         />
       </StyledMotion>
-    </ContainerDiv>
+    </div>
   );
 };
 
