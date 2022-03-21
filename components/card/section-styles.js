@@ -1,13 +1,13 @@
 export const styles = {
   container: {
-    color: "rgb(55, 65, 81)",
-    backgroundColor: "rgb(20, 20, 20)",
+    color: "blue20",
+    backgroundColor: "black50",
     paddingLeft: "4rem",
     paddingRight: "1rem",
   },
   title: {
-    color: "rgba(255, 255, 255, 1)",
-    fontWeight: 700,
+    color: "white10",
+    fontWeight: "bold",
     fontSize: "2rem",
   },
   cardWrapper: {

@@ -1,8 +1,10 @@
 /** @jsxImportSource theme-ui */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
+
+import { magic } from "../../lib/magic-client";
 
 import {
   Container,
@@ -18,9 +20,33 @@ import { styles, DropdownLink } from "./styles";
 
 const navbar = (props) => {
   const [showDropdown, setShowDropdown] = useState(false);
+  const [username, setUsername] = useState();
 
-  const { username } = props;
   const router = useRouter();
+
+  useEffect(async () => {
+    try {
+      const { email } = await magic.user.getMetadata();
+      if (email) {
+        setUsername(email);
+      }
+    } catch (error) {
+      console.log({ error });
+    }
+  }, []);
+
+  const handleSignout = async (e) => {
+    e.preventDefault();
+
+    try {
+      await magic.user.logout();
+      console.log(await magic.user.isLoggedIn());
+      router.push("/login");
+    } catch (error) {
+      console.log({ error });
+      router.push("/login");
+    }
+  };
 
   const handleOnClickHome = (e) => {
     e.preventDefault();
@@ -34,7 +60,7 @@ const navbar = (props) => {
 
   const handleShopDropdown = (e) => {
     e.preventDefault();
-    setShowDropdown(!showDropdown);
+    setShowDropdown((prev) => !prev);
   };
 
   return (
@@ -79,9 +105,7 @@ const navbar = (props) => {
             {showDropdown && (
               <Box sx={styles.navDropdown}>
                 <Box>
-                  <Link href="/login">
-                    <DropdownLink>Sign out</DropdownLink>
-                  </Link>
+                  <DropdownLink onClick={handleSignout}>Sign out</DropdownLink>
                   <Box sx={styles.lineWrapper}></Box>
                 </Box>
               </Box>

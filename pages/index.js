@@ -6,13 +6,13 @@ const SectionCards = dynamic(import("../components/card/section-cards"));
 
 import { Box } from "theme-ui";
 
-import { getPopularVideos, getVideos } from "../lib/videos";
+import { getVideos, getPopularVideos } from "../lib/videos";
 
 export async function getServerSideProps() {
   const disneyVideos = await getVideos("disney trailer");
   const productivityVideos = await getVideos("Productivity");
   const travelVideos = await getVideos("travel");
-  const popularVideos = await getVideos("");
+  const popularVideos = await getPopularVideos();
 
   return {
     props: { disneyVideos, productivityVideos, travelVideos, popularVideos },

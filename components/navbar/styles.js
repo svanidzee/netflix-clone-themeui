@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 export const styles = {
   container: {
-    color: "rgba(255, 255, 255, 1)",
+    color: " white10",
     position: "fixed",
     top: "0px",
     backgroundImage: "linear-gradient(to bottom, var(--gradient-stops))",
@@ -20,19 +20,18 @@ export const styles = {
     paddingRight: "1rem",
     display: "flex",
     padding: "1.25rem",
-    // alignItems: "center",
   },
   logoLink: {
     display: "flex",
-    fontWeight: 500,
+    fontWeight: "body",
     fontSize: "1rem",
     alignItems: "center",
-    paddingX: "46px",
-    color: "rgba(255, 255, 255, 1)",
+    paddingX: 46,
+    color: " white10",
     marginBottom: "1rem,",
   },
   logoWrapper: {
-    color: "rgb(220, 38, 38)",
+    color: "red",
     width: "8rem",
   },
   navItems: {
@@ -48,7 +47,7 @@ export const styles = {
     listStyle: "none",
   },
   navItem: {
-    fontWeight: 600,
+    fontWeight: "heading",
     fontSize: "1rem",
     cursor: "pointer",
     marginRight: "1.1rem",
@@ -70,7 +69,6 @@ export const styles = {
   },
   username: {
     fontSize: "1rem",
-    // marginRight: "33em",
   },
   navDropdown: {
     position: "absolute",
@@ -79,12 +77,12 @@ export const styles = {
     paddingTop: "0.5rem",
     paddingBottom: "0.5rem",
     paddingRight: "0.5rem",
-    backgroundColor: "rgb(20, 20, 20)",
+    backgroundColor: "black50)",
     borderWidth: "1px",
-    color: "rgba(255, 255, 255, 1)",
+    color: "white10",
     borderRadius: "0.25rem",
 
-    borderColor: "rgba(75, 85, 99, 1)",
+    borderColor: "blue",
 
     boxShadow:
       "var(0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 0 #0000), var(--ring-shadow, 0 0 #0000), 0 20px 25px -5px rgba(0, 0, 0, 0.1)",
